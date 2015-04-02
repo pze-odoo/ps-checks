@@ -117,10 +117,13 @@
                                     </tr>
                                 </t>
                             </table>
-                           <table class="text-right" width="100%">
+                            <table class="text-right" width="100%">
                                 <tr>
                                     <td width="90%">
                                         <strong>Check Amount</strong>
+                                    </td>
+                                    <td>
+                                        <strong><span t-field="voucher.amount"/></strong>
                                     </td>
                                 </tr>
                             </table>
