@@ -1,10 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
-<template id="report_bottomcheck">
+<template id="report_check">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="voucher">
             <div class="page">
+                <table width="100%" height="350px;">
+                    <tr>
+                        <td style="vertical-align:top;">
+                            <table width="100%" height="28px;">
+                                <tr>
+                                    <td>
+                                        <div class="row col-xs-12" style="margin-top:5px; padding-right:0px;">
+                                            <div class="text-right col-xs-offset-12">
+                                                <t t-if="not voucher.journal_id.use_preprint_check">
+                                                     <strong> <span t-esc="voucher.number"/></strong>
+                                                </t>
+                                            </div>
+                                            <div class="text-right col-xs-1 col-xs-offset-10">
+                                                <t t-if="voucher.journal_id.use_preprint_check">
+                                                      <strong> <span t-value="   "/></strong>
+                                                 </t>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="col-xs-12 mt32 text-left" >
+                                <div class="col-xs-offset-11 col-xs-1">
+                                    <span t-field="voucher.date"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12" style="margin-top:25px;">
+                                <div class="text-left col-xs-offset-1 col-xs-7">
+                                    <span t-field="voucher.partner_id.name"/>
+                                </div>
+                                <div class="text-left col-xs-offset-3 col-xs-1">
+                                    <span t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;voucher.currency_id&quot;}" t-field="voucher.amount"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12" style="margin-top:10px; padding-left:0px;">
+                                <span t-esc="fill_stars(voucher.amount_in_word)"/>
+                            </div>
+
+                            <div class="col-xs-12" style="margin-top:75px;">
+                                <div class="text-left col-xs-offset-1 col-xs-4">
+                                    <span t-field="voucher.name"/>
+                                </div>
+                                <div class="text-left col-xs-1 col-xs-offset-6"/>
+                            </div>
+                            <div class="col-xs-12" style="margin-top:10px; padding-right:0px;">
+                                <div class="text-center col-xs-offset-7 col-xs-5" style="border-bottom:1px solid black;"/>
+                            </div>
+                            <div class="col-xs-12" style="margin-top:10px; padding-right:0px;">
+                                <div class="text-center col-xs-offset-7 col-xs-5">
+                                    <strong>Authorized Signature</strong>
+                               </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
                 <table width="100%" height="280px;">
                     <tr>
                         <td style="vertical-align:top;">
@@ -153,43 +208,6 @@
                                     </td>
                                 </tr>
                             </table>
-                        </td>
-                    </tr>
-                </table>
-                <table width="100%" height="350px;">
-                    <tr>
-                        <td style="vertical-align:top;">
-                            <div class="col-xs-12 mt32 text-left" >
-                                <div class="col-xs-offset-11 col-xs-1">
-                                    <span t-field="voucher.date"/>
-                                </div>
-                            </div>
-                            <div class="col-xs-12" style="margin-top:25px;">
-                                <div class="text-left col-xs-offset-1 col-xs-7">
-                                    <span t-field="voucher.partner_id.name"/>
-                                </div>
-                                <div class="text-left col-xs-offset-3 col-xs-1" >
-                                    <span t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;voucher.currency_id&quot;}" t-field="voucher.amount"/>
-                                </div>
-                            </div>
-                            <div class="col-xs-12" style="margin-top:10px; padding-left:0px;">
-                                <span t-esc="fill_stars(voucher.amount_in_word)"/>
-                            </div>
-
-                            <div class="col-xs-12" style="margin-top:75px;">
-                                <div class="text-left col-xs-offset-1 col-xs-4">
-                                    <span t-field="voucher.name"/>
-                                </div>
-                                <div class="text-left col-xs-1 col-xs-offset-6"/>
-                            </div>
-                            <div class="col-xs-12" style="margin-top:10px; padding-right:0px;">
-                                <div class="text-center col-xs-offset-7 col-xs-5" style="border-bottom:1px solid black;"/>
-                            </div>
-                            <div class="col-xs-12" style="margin-top:10px; padding-right:0px;">
-                                <div class="text-center col-xs-offset-7 col-xs-5">
-                                    <strong>Authorized Signature</strong>
-                               </div>
-                            </div>
                         </td>
                     </tr>
                 </table>
